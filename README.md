@@ -107,6 +107,16 @@ outputs/
 
 ---
 
+## Features
+
+- Load cleaned datasets
+- Generate polynomial features
+- Generate interaction features
+- Generate ratio features
+- Save engineered datasets
+- Generate feature engineering reports
+- Prevent target leakage by excluding the target column from engineered features
+
 ## Future Improvements
 
 - Ignore identifier columns automatically
