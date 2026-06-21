@@ -1,0 +1,12 @@
+
+        =====================================
+        FEATURE ENGINEERING REPORT
+        =====================================
+
+        Original Columns : 13
+        Final Columns    : 63
+        Features Added   : 50
+
+        Output Dataset:
+        outputs\engineered_cleaned_data.csv
+        

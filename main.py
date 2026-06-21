@@ -1,6 +1,8 @@
 import pandas as pd
 from feature_engineering import engineer_features
-from pathlib import Path
+from utils import load_dataset, save_dataset, create_output_folder
+from report import generate_report
+
 def main():
      
     while True:
@@ -12,12 +14,24 @@ def main():
         if filename.lower() == "exit":
                 print("Goodbye!")
                 break
-        try: 
-            filepath = Path("datasets") / filename
-            df = pd.read_csv(filepath)
-            #feature_engineering
+        try:
+            df = load_dataset(filename)
+            original_columns = df.shape[1]
+
             df = engineer_features(df)
-            print(df.head())
+            final_columns = df.shape[1]
+            
+            output_path = save_dataset(df, filename)
+            
+            
+            generate_report(
+                original_columns,
+                final_columns,
+                output_path
+            )
+            
+            print("\n✓ Feature engineering completed!")
+            print(f"\nDataset saved to: {output_path}")
 
         except FileNotFoundError as e:
             print(f"\nError: {e}")#
