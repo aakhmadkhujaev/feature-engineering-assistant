@@ -1,6 +1,6 @@
 import pandas as pd
 from feature_engineering import engineer_features
-from utils import load_dataset, save_dataset, create_output_folder
+from utils import load_dataset, save_dataset, create_output_folder, select_target_column
 from report import generate_report
 
 def main():
@@ -16,9 +16,11 @@ def main():
                 break
         try:
             df = load_dataset(filename)
+            target_column = select_target_column(df)
+            print(target_column)
             original_columns = df.shape[1]
 
-            df = engineer_features(df)
+            df = engineer_features(df, target_column)
             final_columns = df.shape[1]
             
             output_path = save_dataset(df, filename)

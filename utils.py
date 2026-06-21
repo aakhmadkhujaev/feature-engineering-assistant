@@ -18,3 +18,24 @@ def save_dataset(df, filename):
     df.to_csv(output_path, index=False)
 
     return output_path
+
+def select_target_column(df):
+    columns = df.columns
+
+    for index, column in enumerate(columns, start=1):
+        print("\nAvailable Columns:")
+        print(f"{index}. {column}")
+    while True:
+        try:
+            target_choice = int(input("Enter target column number: "))
+
+            if 1 <= target_choice <= len(columns):
+                target_column = columns[target_choice - 1]
+                return target_column
+
+            print("Invalid column number. Please try again.")
+
+        except ValueError:
+            print("Please enter a valid number.")
+
+
